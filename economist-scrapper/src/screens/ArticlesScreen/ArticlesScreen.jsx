@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import LoadingBox from '../../components/LoadingBox/LoadingBox';
 import ArticlesSrv from '../../services/ArticlesSrv';
 
 export default function ArticlesScreen(props) {
 
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getArticles = async () => {
-    const articles = await ArticlesSrv.getArticles();
+    const {data: {articles}} = await ArticlesSrv.getArticles();
     console.log(`articles`, articles);
     setArticles(articles);
+    setLoading(false);
   }
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user?._id) {
-      props.history.push('/login');
-    } else {
-      getArticles();
-    }
-  }, [props.history]);
+    getArticles();
+  }, []);
 
   return (
     <div>
-      Articles
+      {loading ? (<LoadingBox></LoadingBox>) : (
+        <ul>
+          {articles.map((article, i) => (
+            <li key={i}>
+              <a target="_blank" rel="noreferrer" href={article.link}>{article.title}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
