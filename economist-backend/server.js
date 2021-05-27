@@ -8,22 +8,18 @@ import mongoose from 'mongoose';
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amazona', {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/mistho', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
 
-app.use(cors());
-
 
 app.use('/api/users', userRouter);
 app.use('/api/articles', articlesRouter);
-app.get('/api/config/paypal', (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
-});
 
 app.get('/', (req, res) => {
   res.send('Server is ready!');
