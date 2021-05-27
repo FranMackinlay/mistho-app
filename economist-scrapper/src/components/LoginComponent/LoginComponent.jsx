@@ -6,6 +6,7 @@ import './LoginComponent.css';
 
 export default function LoginComponent(props) {
 
+  const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,11 +29,13 @@ export default function LoginComponent(props) {
     };
 
     try {
-      const res = await UsersSrv.userSignIn(user);
-      console.log(`res`, res);
-
+      const {data} = await UsersSrv.userSignIn(user);
+      if (data._id) {
+        localStorage.setItem('user', JSON.stringify(data));
+        props.history.push('/articles')
+      }
     } catch (error) {
-      console.log(`error`, error);
+      setError('Invalid username or password');
     }
 
   }
@@ -42,6 +45,9 @@ export default function LoginComponent(props) {
     <div className='login'>
 				<h1>Welcome!</h1>
 				<form className="df fldc" onSubmit={onSubmit}>
+          {error && (
+            <span style={{color: 'red'}}>{error}</span>
+          )}
 					<input type='email' value={email} onChange={onChangeEmail} placeholder='Email..' />
 					<input type='password' value={password} onChange={onChangePassword} placeholder='Password..' />
 					<button type='submit'>Login</button>
