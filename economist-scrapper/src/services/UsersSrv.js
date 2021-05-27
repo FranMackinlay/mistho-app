@@ -12,7 +12,6 @@ const UsersSrv = {
         password,
       }
     });
-    console.log(`res`, res);
     return res;
   },
 }
