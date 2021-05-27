@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import './LoginComponent.css';
 
 
-export default function LoginComponent() {
+export default function LoginComponent(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,14 +18,17 @@ export default function LoginComponent() {
     setPassword(e.target.value);
   }
 
-  useEffect(() => {
-    console.log(`email, password`, email, password)
-  }, [email, password]);
+
+  const onSubmit = e => {
+    e?.preventDefault();
+    email && password && props.history.push('/articles');
+  }
+
 
   return (
     <div className='login'>
 				<h1>Welcome!</h1>
-				<form className="df fldc">
+				<form className="df fldc" onSubmit={onSubmit}>
 					<input type='email' value={email} onChange={onChangeEmail} placeholder='Email..' />
 					<input type='password' value={password} onChange={onChangePassword} placeholder='Password..' />
 					<button type='submit'>Login</button>
