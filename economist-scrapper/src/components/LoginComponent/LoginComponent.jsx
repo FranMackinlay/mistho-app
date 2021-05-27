@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UsersSrv from '../../services/UsersSrv';
 
 import './LoginComponent.css';
 
@@ -19,9 +20,21 @@ export default function LoginComponent(props) {
   }
 
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e?.preventDefault();
-    email && password && props.history.push('/articles');
+    const user = {
+      email,
+      password,
+    };
+
+    try {
+      const res = await UsersSrv.userSignIn(user);
+      console.log(`res`, res);
+
+    } catch (error) {
+      console.log(`error`, error);
+    }
+
   }
 
 
