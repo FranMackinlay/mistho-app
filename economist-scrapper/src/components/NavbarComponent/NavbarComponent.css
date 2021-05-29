@@ -1,0 +1,26 @@
+.navbar-container {
+  /* border-bottom: solid 1px grey; */
+}
+
+.navbar-items {
+  border-bottom: solid 1px grey;
+  border-top: solid 1px grey;
+}
+
+.navbar-item {
+  flex-basis: 12%;
+  font-size: 1.2em;
+  text-align: center;
+  border-right: solid 1px grey;
+  height: 45%;
+}
+
+.login-boder {
+  border-left: solid 1px grey;
+  padding-left: .8em;
+  height: 45%;
+}
+
+.subscribe {
+  margin-right: .8em;
+}

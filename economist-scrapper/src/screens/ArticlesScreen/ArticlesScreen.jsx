@@ -31,7 +31,7 @@ export default function ArticlesScreen(props) {
           {articles.map((article, i) => (
             <li className="article-card card fm-mr-3 fm-mb-3" key={i}>
               <Link to={{pathname: `/article/${article.slug}`, state: article}} params={article.link}>
-                <div className="article">
+                <div className="article text-center">
                   <img src={article.img} alt="" className="article-img fm-maw100" />
                   <h3 className="fm-m-0 text-center fm-bold fm-p-2 fm-h50 fm-df fm-aliic">{article.title}</h3>
                 </div>

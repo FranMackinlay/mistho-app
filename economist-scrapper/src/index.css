@@ -3,7 +3,8 @@
   --overlay-color: rgb(19 59 111 / 50%);
   --menu-speed: 0.75s;
 }
-div, form {
+
+form {
   border-radius: 1em;
 }
 
@@ -15,6 +16,7 @@ body {
   height: 100%;
   background-color: whitesmoke;
   color: black;
+  font-family: 'Circular-Loom';
 }
 
 a:hover {
