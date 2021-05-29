@@ -7,21 +7,23 @@ import { generateToken, isAuth } from '../utils.js';
 const userRouter = express.Router();
 
 userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  let createdUser;
+  let user = await User.findOne({ email: req.body.email });
+
   if (!user) {
-    const userCreated = new User({ email: req.body.email, password: bcrypt.hashSync(req.body.password, 8) });
-    createdUser = userCreated;
+    const userCreated = new User({ name: req.body.name, email: req.body.email, password: bcrypt.hashSync(req.body.password, 8) });
+    userCreated.save();
+    user = userCreated;
   }
 
-  if (createdUser) {
-    if (bcrypt.compareSync(req.body.password, createdUser.password)) {
-
+  if (user) {
+    console.log(`bcrypt.compareSync(req.body.password, user.password)`, bcrypt.compareSync(req.body.password, user.password))
+    if (bcrypt.compareSync(req.body.password, user.password)) {
+      console.log(`here`);
       return res.send({
-        _id: createdUser._id,
-        name: createdUser.name,
-        email: createdUser.email,
-        token: generateToken(createdUser),
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        token: generateToken(user),
       });
     }
   }
