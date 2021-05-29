@@ -16,7 +16,7 @@ h3 {
 	font-weight: 500;
 }
 
-.login input[type='email'], .login input[type='password'] {
+.login input[type='email'], .login input[type='password'], .login input[type='text'] {
 	background: none;
 	display: block;
 	margin: 20px auto;

@@ -7,10 +7,11 @@ import ArticleScreen from './screens/ArticleScreen/ArticleScreen';
 import ArticlesScreen from './screens/ArticlesScreen/ArticlesScreen';
 
 function App() {
+
   return (
     <div>
-      <NavbarComponent></NavbarComponent>
       <Router>
+        <NavbarComponent></NavbarComponent>
         <Switch>
           <Route path="/login" component={LoginComponent} />
           <Route path="/articles" component={ArticlesScreen} />

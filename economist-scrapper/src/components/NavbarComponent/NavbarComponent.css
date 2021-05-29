@@ -21,6 +21,10 @@
   height: 45%;
 }
 
+.link-to-login {
+  font-size: 1.2em;
+}
+
 .subscribe {
   margin-right: .8em;
 }
