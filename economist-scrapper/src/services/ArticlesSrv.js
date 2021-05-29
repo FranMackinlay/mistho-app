@@ -10,6 +10,17 @@ const ArticlesSrv = {
     });
     return res;
   },
+  getArticle: async ({ link, slug }) => {
+    const res = await axios({
+      method: 'get',
+      url: `${API_URL}/articles/${slug}`,
+      params: {
+        link,
+      },
+    });
+    return res;
+  },
+
 }
 
 export default ArticlesSrv;
