@@ -31,7 +31,7 @@ export default function NavbarComponent() {
           </div>
           <div className="navbar-login fm-df fm-aliic fm-h100">
             <button className="btn btn-primary subscribe">Subscribe</button>
-            <Link to="/login" className="fm-df fm-aliic link-to-login">
+            <Link to={`${user.name ? '/articles' : '/login'}`} className="fm-df fm-aliic link-to-login">
               <span className="login-boder fm-df fm-aliic">{user?.name ? user?.name : 'Login'}</span>
             </Link>
           </div>

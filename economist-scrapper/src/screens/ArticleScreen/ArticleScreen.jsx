@@ -9,10 +9,9 @@ export default function ArticleScreen(props) {
   const [article, setArticle] = useState([])
   const [loading, setLoading] = useState(true);
 
-  const getArticles = async () => {
+  const getArticles = async user => {
     const {link, slug} = props.location.state;
-    const {data: {article}} = await ArticlesSrv.getArticle({link, slug});
-    console.log(`article`, article);
+    const {data: {article}} = await ArticlesSrv.getArticle({link, slug}, user.token);
     setArticle(article);
     setLoading(false);
   }
@@ -22,7 +21,7 @@ export default function ArticleScreen(props) {
     if (!user?._id) {
       props.history.push('/login');
     } else {
-      getArticles();
+      getArticles(user);
     }
   }, [props]);
 
