@@ -1,18 +1,19 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Scrapper from '../batchs/scrapper.js';
+import { isAuth } from '../utils.js';
 
 
 const articlesRouter = express.Router();
 
-articlesRouter.get('/', expressAsyncHandler(async (req, res) => {
+articlesRouter.get('/', isAuth, expressAsyncHandler(async (req, res) => {
 
   const articles = await Scrapper.scrapeArticles();
 
   res.status(200).send({ articles });
 }));
 
-articlesRouter.get('/:articleSlug', expressAsyncHandler(async (req, res) => {
+articlesRouter.get('/:articleSlug', isAuth, expressAsyncHandler(async (req, res) => {
 
   const { link } = req.query;
 
