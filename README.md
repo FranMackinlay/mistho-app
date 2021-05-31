@@ -18,20 +18,6 @@ Once all is installed:
 
 On root folder:
 
-- On one terminal:
-
-```
-mistho-app$: cd economist-scrapper
-```
-```
-economist-scrapper$: npm i
-```
-```
-economist-scrapper$: npm start
-```
-
-- On the second terminal:
-
 ```
 mistho-app$: cd economist-backend
 ```
@@ -41,6 +27,8 @@ economist-backend$: npm i
 ```
 economist-backend$: npm start
 ```
+
+- Open Chrome and go to http://localhost:5000
 
 ##
 ## Enjoy!
