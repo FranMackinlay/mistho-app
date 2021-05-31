@@ -4,15 +4,15 @@
 
 ## Installation & Usage
 
-You need to have a MongoDb instance running locally
+You only need to have Git, Node & npm to run locally.
 
-To do so, you can check the MongoDb Documentation:
+Install Node & npm:
 
-- [MacOS](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
-- [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
-- [Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+- [MacOS](https://changelog.com/posts/install-node-js-with-homebrew-on-os-x)
+- Linux: sudo apt install nodejs
+- [Windows](https://nodejs.org/es/download/)
 
-Once MongoDb is running:
+Once all is installed:
 
 - Clone repo
 
