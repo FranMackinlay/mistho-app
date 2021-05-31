@@ -17,7 +17,7 @@ const publicPath = path.join(__dirname, '..', 'public');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/mistho', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mistho', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
