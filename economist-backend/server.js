@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import articlesRouter from './routers/articlesRouter.js';
 import userRouter from './routers/userRouter.js';
-import mongoose from 'mongoose';
 import path from 'path';
 
 dotenv.config();
@@ -17,11 +16,6 @@ const publicPath = path.join(__dirname, '..', 'public');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mistho', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
 
 app.use(express.static('build'));
 
